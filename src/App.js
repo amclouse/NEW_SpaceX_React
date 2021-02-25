@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import SpaceXDisplay from "./components/SpaceXDisplay";
-import TemporaryDrawer from "./components/Navigation/Navbar.jsx"
-import { Modal } from "@material-ui/core";
+import SimpleTabs from "./components/Navigation/Navbar.jsx";
 
 const SpaceX = () => {
-  const [search, setSearch] = useState("");
+  // const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
 
   const fetchResults = () => {
-    let url = `https://api.spacexdata.com/v3/capsules/${search}`;
+    let url = `https://api.spacexdata.com/v3/rockets/`
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -17,6 +15,7 @@ const SpaceX = () => {
       })
       .catch((err) => console.log(err));
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     fetchResults();
@@ -24,11 +23,7 @@ const SpaceX = () => {
 
   return (
     <div>
-      
-      <TemporaryDrawer />
-      <SpaceXDisplay fetchResults={() => fetchResults()} results={results} />
-      <h1>It's SpaceX alright</h1>
-      <h1>this will be the initial landing page</h1>
+      <SimpleTabs handleSubmit={(e) => handleSubmit(e)} results={results}/>
     </div>
   );
 };

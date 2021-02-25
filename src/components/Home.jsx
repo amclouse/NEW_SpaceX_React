@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
-const SpaceXDisplay = () => {
-  
+const Home = () => {
   return (
     <div>
-        <h1>Yep, I'm the home page</h1>
+      <h1>It's SpaceX alright</h1>
+      <h1>this will be the initial landing page</h1>
     </div>
   );
 };
 
-export default SpaceXDisplay;
+export default Home;
