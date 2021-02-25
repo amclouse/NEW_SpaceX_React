@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import SpaceXDisplay from "./components/SpaceXDisplay";
+import TemporaryDrawer from "./components/Navigation/Navbar.jsx"
+import { Modal } from "@material-ui/core";
 
-function App() {
+const SpaceX = () => {
+  const [search, setSearch] = useState("");
+  const [results, setResults] = useState([]);
+
+  const fetchResults = () => {
+    let url = `https://api.spacexdata.com/v3/capsules/${search}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        setResults(data);
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetchResults();
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      
+      <TemporaryDrawer />
+      <SpaceXDisplay fetchResults={() => fetchResults()} results={results} />
+      <h1>It's SpaceX alright</h1>
+      <h1>this will be the initial landing page</h1>
     </div>
   );
-}
+};
 
-export default App;
+export default SpaceX;
+
+// <input onChange={e => {
+//   fetchResults()
+// }}>
+// </input>
