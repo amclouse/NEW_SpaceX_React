@@ -14,7 +14,6 @@ export default function SimpleTabs(props) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
   return (
     <Router>
       <div>
@@ -27,10 +26,10 @@ export default function SimpleTabs(props) {
             aria-label="disabled tabs example"
           >
             <Link to="/home">
-              <Tab label="Active" />
+              <Tab label="Home" />
             </Link>
             <Link to="/display">
-              <Tab label="Active" />
+              <Tab label="Capsules" />
             </Link>
           </Tabs>
         </Paper>
@@ -39,7 +38,7 @@ export default function SimpleTabs(props) {
             <Home />
           </Route>
           <Route path="/display">
-            <CapsuleDisplay results={props.results} handleSubmit={props.handleSubmit}/>
+            <CapsuleDisplay url={props.url} />
           </Route>
         </Switch>
       </div>

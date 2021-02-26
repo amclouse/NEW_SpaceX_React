@@ -3,27 +3,15 @@ import SimpleTabs from "./components/Navigation/Navbar.jsx";
 
 const SpaceX = () => {
   // const [search, setSearch] = useState("");
-  const [results, setResults] = useState([]);
+  // const [results, setResults] = useState([]);
+  
 
-  const fetchResults = () => {
-    let url = `https://api.spacexdata.com/v3/rockets/`
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        setResults(data);
-        console.log(data);
-      })
-      .catch((err) => console.log(err));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    fetchResults();
-  };
+  let url = `https://api.spacexdata.com/v3`
 
   return (
     <div>
-      <SimpleTabs handleSubmit={(e) => handleSubmit(e)} results={results}/>
+      {/* <SimpleTabs url={url} handleSubmit={(e) => handleSubmit(e)} results={results}/> */}
+      <SimpleTabs url={url} />
     </div>
   );
 };
