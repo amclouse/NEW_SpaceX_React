@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 import CapsuleModal from "./CapsuleModal";
@@ -22,7 +21,7 @@ const useStyles = makeStyles({
   },
   pos: {
     marginBottom: 12,
-    margin: "12 px"
+    margin: "12 px",
   },
 });
 
@@ -32,13 +31,12 @@ export default function CapsuleDisplay(props) {
   const bull = <span className={classes.bullet}>•</span>;
 
   const fetchResults = () => {
-    fetch(`${props.url}/capsules`)
+    fetch(`${props.url}/missions`)
       .then((res) => res.json())
       .then((data) => {
         setResults(data);
         console.log(data);
       });
-    // .catch((err) => console.log(err));
   };
 
   useEffect(() => {
@@ -47,7 +45,14 @@ export default function CapsuleDisplay(props) {
 
   return (
     <div>
-      
+      <div>
+        <p>
+          A space program is nothing without completing missions. Failed or
+          successful, each mission has brought further insight to SpaceX's
+          ultimate mission, exploring space and our galaxy, and one day in the
+          not so distant future, colonising Mars.
+        </p>
+      </div>
       {results.map((result) => {
         return (
           <div>
@@ -58,24 +63,17 @@ export default function CapsuleDisplay(props) {
                   color="textSecondary"
                   gutterBottom
                 >
-                  {result.capsule_serial}
+                  {" "}
+                  <strong>Mission name: </strong>
+                  {result.mission_name}
                 </Typography>
-                <Typography variant="h5" component="h2">
-                  be{bull}nev{bull}o{bull}lent
-                </Typography>
-                <Typography className={classes.pos} color="textSecondary">
-                  adjective
-                </Typography>
+                <br />
                 <Typography variant="body2" component="p">
-                  well meaning and kindly.
-                  <br />
-                  {'"a benevolent smile"'}
+                  {result.description}
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small">
-                  <CapsuleModal />
-                </Button>
+                <CapsuleModal results={result} />
               </CardActions>
             </Card>
           </div>

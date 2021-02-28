@@ -1,16 +1,13 @@
 import React, { useState } from "react";
 import SimpleTabs from "./components/Navigation/Navbar.jsx";
+import "./App.css"
 
 const SpaceX = () => {
-  // const [search, setSearch] = useState("");
-  // const [results, setResults] = useState([]);
-  
 
   let url = `https://api.spacexdata.com/v3`
 
   return (
-    <div>
-      {/* <SimpleTabs url={url} handleSubmit={(e) => handleSubmit(e)} results={results}/> */}
+    <div className="yes">
       <SimpleTabs url={url} />
     </div>
   );

@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import Button from "@material-ui/core/Button";
+
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -18,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CapsuleModal() {
+export default function CapsuleModal(props) {
   
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -30,12 +32,13 @@ export default function CapsuleModal() {
   const handleClose = () => {
     setOpen(false);
   };
+  console.log(props)
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
-        react-transition-group
-      </button>
+      <Button color="secondary" variant="contained" type="button" onClick={handleOpen}>
+        Media sources
+      </Button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -50,8 +53,10 @@ export default function CapsuleModal() {
       >
         <Fade in={open}>
           <div className={classes.paper}>
-            <h2 id="transition-modal-title">Transition modal</h2>
-            <p id="transition-modal-description">react-transition-group animates me.</p>
+            <h4>Below you will find media sources to find out addition info about each launch</h4>
+            <p id="transition-modal-description"><a href={props.results.wikipedia}>Wiki</a></p>
+            <p id="transition-modal-description"><a href={props.results.website}>Website</a></p>
+            <p id="transition-modal-description"><a href={props.results.twitter}>Twitter</a></p>
           </div>
         </Fade>
       </Modal>

@@ -1,10 +1,11 @@
 import React from "react";
+import "../styles/Home.css";
 
 const Home = () => {
   return (
-    <div>
-      <h1>It's SpaceX alright</h1>
-      <h1>this will be the initial landing page</h1>
+    <div className="home-div">
+      <h1 className="home-header">It's SpaceX alright</h1>
+      <img src="../styles/assets/Chloe.JPG" />
     </div>
   );
 };
