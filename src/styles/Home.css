@@ -1,5 +1,7 @@
 .home-div {
     text-align: center;
+    background-size: cover;
+    background: url("https://upload.wikimedia.org/wikipedia/commons/7/7d/Crew_Dragon_at_the_ISS_for_Demo_Mission_1_%28cropped%29.jpg");
 }
 
 .home-header {
@@ -9,7 +11,14 @@
     -webkit-animation: fadeIn ease 6s;
 }
 
+.home-div p {
+    font-size: 20px;
+    animation: fadeIn ease 10s;
+    -webkit-animation: fadeIn ease 6s;
+}
+
 @keyframes fadeIn {
     0% {opacity:0;}
     100% {opacity:1;}
 }
+

@@ -8,6 +8,10 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
+//Styling
+import Dragon1 from "../../styles/assets/Dragon1.jpg"
+import Dragon2 from "../../styles/assets/Dragon2.jpg"
+import "../../styles/Dragon.css"
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -52,13 +56,15 @@ const Dragon = (props) => {
   }, []);
 
   return (
-    <div>
+    <div className="dragon-container">
       <h3>
         Perhaps the most interesting spacecraft Space X have created are the
         Dragon and Dragon 2. Used for delivering cargo to the ISS and
         transporting astronauts, the Dragon and Dragon 2 are the backbone of
         Space X's success.
       </h3>
+      <br />
+      <br />
       {results.map((result) => {
         return (
           <div>
@@ -105,6 +111,10 @@ const Dragon = (props) => {
           </div>
         );
       })}
+    <h1>Dragon 1</h1>
+    <img src={Dragon1} />
+    <h1>Dragon 2</h1>
+    <img src={Dragon2} />
     </div>
   );
 };
